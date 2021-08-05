@@ -103,12 +103,11 @@ Os seguites pacotes são recomendados, e podem ser instalados via pip:
 -   `back`: Formatador de código
 -   `flake8`: Corrige e sugere modificações para estilo do código fonte
 -   `mypy`: Checagem de tipos de variáveis (static type checker)
--   `venv`: Criação de ambiente virutal
 
 Para instalar:
 
 ```powershell
-pip install --upgrade black flake8 mypy venv
+pip install --upgrade black flake8 mypy
 ```
 
 # Criação de ambiente virtual para instalação de dependências
