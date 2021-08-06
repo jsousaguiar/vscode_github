@@ -53,6 +53,8 @@ A pasta será clonada para o diretório atual, criando uma pasta para para cada 
 git clone git@github.com:usuario/repositorio.git
 ```
 
+
+
 ## Puxar as mudanças do repositório origem (github)
 
 ```sh
@@ -109,11 +111,11 @@ O VSCode utiliza alguns pacotes python para melhorar a experiência, como o form
 
 Os seguites pacotes são recomendados, e podem ser instalados via pip:
 
--   `back`: Formatador de código
+-   `black`: Formatador de código
 -   `flake8`: Corrige e sugere modificações para estilo do código fonte
 -   `mypy`: Checagem de tipos de variáveis (static type checker)
 
-Para instalar:
+Para instalar, pode-se usar o comando abaixo, ou instalar todos os pacotes no ambiente virtual, conforme descrito em [Criação de ambiente virtual para instalação de dependências](#criação-de-ambiente-virtual-para-instalação-de-dependências):
 
 ```powershell
 pip install --upgrade black flake8 mypy
@@ -139,10 +141,17 @@ venv\Scripts\Activate.ps1
 
 Ao ativar o ambiente virutal, no prompt será possível ver a mensagem "(venv)" no começo da linha, indicando que o ambiente virtual está ativado.
 
-Após a ativação do ambiente virtual, todos os pacotes instalados via pip serão instalados dentro do ambiente. Para instalar todas as dependências necessárias para o projeto, digite:
+Após a ativação do ambiente virtual, todos os pacotes instalados via pip serão instalados dentro do ambiente. Assim, recomenda-se a criação de dois arquivos (dev-requeriments.txt e requeriments.txt para as dependências necessárias para desenvolvimento e execução do projeto). 
+
+Para instalar as dependências necessárias para executar o projeto, digite:
 
 ```powershell
 pip install -r requirements.txt --upgrade
+```
+Para instalar as dependências necessárias para desenvolvimento do projeto, digite:
+
+```powershell
+pip install -r dev-requirements.txt --upgrade
 ```
 
 # Outras recomendações
