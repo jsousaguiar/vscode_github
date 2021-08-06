@@ -6,6 +6,7 @@ Instale com as opções padrão
 
 ## Configurar usuário no git:
 
+No terminal, digite:
 ```sh
 git config --global user.name "Nome Completo Usuário"
 git config --global user.email "usuario@provedor.com"
@@ -25,9 +26,15 @@ Pode-se deixar a senha em branco.
 O comando acima cria um par de chaves, uma pública e outra privada. A chave pública vamos colocar no github, a chave privada fica guardada no computador.
 
 Copia a chave pública para a área de transferência:
-
+ 
+No Terminal do Linux ou no Powershell do Windows, digite:
 ```sh
 cat ~/.ssh/id_ed25519.pub | clip
+```
+Se preferir usar o Prompt de Comando do Windows, digite:
+
+```sh
+type .ssh\id_ed25519.pub | clip
 ```
 
 Adiciona a chave no github:
@@ -41,7 +48,7 @@ git e github configurados!
 # Principais comandos Git
 
 ## Clonar o repositório
-A pasta será clonada para o diretório atual, então, antes de dar o comando, navegue até o diretório onde ficarão os projetos.
+A pasta será clonada para o diretório atual, criando uma pasta para para cada projeto clonado, então, antes de dar o comando, navegue até o diretório onde ficarão os projetos.
 ```sh
 git clone git@github.com:usuario/repositorio.git
 ```
@@ -90,9 +97,11 @@ git push
 
 -   Python (`ms-python.python`): Extensão necessária para trabalhar com arquivos python
 -   Pylance (`ms-python.vscode-pylance`): Melhora o IntelliSense para python (sugestões e detecção de erros)
+-   Jupyter (`ms-toolsai.jupyter`): parta trabalhar com arquivos do Jupyter Noteook
 -   Python Auto Venv (`whinarn.python-auto-venv`): Ativa o virtual environment automaticamente
 -   GitLens (`eamodio.gitlens`): Recursos adicionais para trabalhar com Git
 -   Live Share Extension Pack (`ms-vsliveshare.vsliveshare-pack`): para colaboração em tempo real
+-   Notepad++ keymap (`ms-vscode.notepadplusplus-keybindings`): para utilizar os atalhos do Notepad++ no VSCode
 
 # Pacotes python para instalar no ambiente
 
