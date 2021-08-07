@@ -213,15 +213,6 @@ Após baixar e descompatar a pasta das fontes, acesse a pasta "ttf", clique com 
 
 Após instalado, abra o Powershell, clique com o botão direito sobre a barra superior e em "Propriedades", "Fonte" e escolha "Fira Code"
 
-## Configurar a fonte no VSCode
-
-Clique em "Arquivo", "Preferênicias", digite "Fonte" na barra de pesquisas e clique em "Editar em settings.json". Defina a fonte, conforme descrito abaixo e salve as configurações:
-
-```json
-"editor.fontFamily": "Fira Code",
-"terminal.integrated.fontFamily": "Fira Code"
-```
-
 ## Definir o Powershell como terminal padrão do VSCode
 
 Digite "Shift+Ctrl+P" e, na barra de pesquisas digite "select default profile" e selecione o Powershell
