@@ -79,7 +79,7 @@ git log
 git add arquivo1.py arquivo2.py ...
 ```
 
-Pode-se adicionar um arquivo por vez, ou usar caracteres especiais, como \*.py, ou \* para todos
+Para os comandos em que se relaciona o nome dos arquivos, pode-se adicionar um arquivo por vez, ou usar caracteres especiais, como \*.py, ou \* para todos
 
 ## Fazer o commit
 
@@ -95,6 +95,90 @@ git commit -m "Mensagem de commit"
 git push
 ```
 
+## Descartar mudanças locais
+
+-   Antes do stage
+
+Caso as mudanças a serem desfeitas ainda não tenham sido adicionadas ao estage (antes do comando `git add`), usa-se o commando `git checkout`:
+
+```sh
+git checkout arquivo1.py arquivo2.py ...
+```
+
+-   Após o stage
+
+Caso as mudanças a serem desfeitas já tenha sido adicionadas ao estage (após o comando `git add`), usa-se o commando `git reset`:
+
+```sh
+git reset arquivo1.py arquivo2.py ...
+```
+
+-   Após o commit, mas antes do push
+
+Caso o commit a ser desfeito ainda não tenha sido enviado para o repositório remoto (antes do comando `git push`), pode-se, ao invés de criar um commit para desfazer as mudanças, simplesmente descartar o commit indesejardo. Desta forma, o commit não aparecerá no histórico. Para tal, usa-se o commando `git reset`:
+
+```sh
+git reset [--soft|--hard] HEAD~1
+```
+
+O comando acima retorna o branch local para o último commit (`HEAD~1` significa um commit antes do commit corrente). A opção `--soft` faz com que as mudanças feitas pelo commit descartado sejam colocadas na área de stage (ou seja, apesar do commit ser desfeito, será possível modificar e refazer as mudanças pretendidas). Já a opção `--hard` descarta totalmente as mudanças do último commit (deve ser usado com cuidado).
+
+## Desfazer mudanças no repositório(github)
+
+Para se reverter o último commit:
+
+```sh
+git revert HEAD [--no-edit]
+git push
+```
+
+Isto criará um novo commit desfazendo as mudanças do commit indicado. Se a opção `--no-edit` for passada, a mensagem de commit será simplesmente "Revert {mensagem_commit_anterior}".
+
+Para se reverter qualquer commit:
+
+```sh
+git revert {número-do-commit} [--no-edit]
+git push
+```
+
+Esta operação só terá sucesso se não houver conflitos. Não abordaremos os casos de resolução de conflitos, pois torna a operação mais complexa, fugindo ao escopo de um documento introdutório.
+
+Caso haja conflito e queira voltar o estado anterior, basta dar o seguinte comando:
+
+```sh
+git reset *
+```
+
+## Trabalhar com stash
+O stash é um local onde podem ser guardadas versões locais que estão sendo trabalhadas. Ajuda a salvar um trabalho e voltar a trabalhar na última versão do projeto.
+
+Criar um stash:
+```sh
+git stash save "Detalhes para lembrar em que estava trabalhando"
+```
+Verificar os stashes salvos:
+```sh
+git stash list
+```
+Voltar a trabalhar em um stash específico:
+```sh
+git stash {pop/appy} {id_do_stash}
+```
+A id do stash pode ser encontrada observando na lista de stashes o número dentro dos colchetes "stash@{0}"
+
+Ao usar o comando `pop` o stash volta para a área de trabalho atual e é retirado da lista de stashes, sendo necessário salvá-lo novamente caso não termine o trabalho.
+
+Ao usar o comando `apply`o stash continua na lista com as altereações salvas anteriormente. Para salvar a nova versão, será necessário excluir o stash anterior ou salvar um novo stash e manter ambas as versões.
+
+Excluir um stash específico:
+```sh
+git stash drop {id_do_stash}
+```
+Para excluir todos os stashes:
+```sh
+git stash clear
+```
+
 # Extensões do VSCode recomendadas
 
 -   Python (`ms-python.python`): Extensão necessária para trabalhar com arquivos python
@@ -104,6 +188,8 @@ git push
 -   GitLens (`eamodio.gitlens`): Recursos adicionais para trabalhar com Git
 -   Live Share Extension Pack (`ms-vsliveshare.vsliveshare-pack`): para colaboração em tempo real
 -   Notepad++ keymap (`ms-vscode.notepadplusplus-keybindings`): para utilizar os atalhos do Notepad++ no VSCode
+- Bracket Pair Colorized 2 (`coenraads.bracket-pair-colorizer-2`): para melhorar a visulização de parêntesis no código
+-   Hjson (`laktak.hjson`): para trabalhar com arquivos no formato hjson
 
 # Pacotes python para instalar no ambiente
 
@@ -141,14 +227,15 @@ venv\Scripts\Activate.ps1
 
 Ao ativar o ambiente virutal, no prompt será possível ver a mensagem "(venv)" no começo da linha, indicando que o ambiente virtual está ativado.
 
-Após a ativação do ambiente virtual, todos os pacotes instalados via pip serão instalados dentro do ambiente. Assim, recomenda-se a criação de dois arquivos (dev-requeriments.txt e requeriments.txt para as dependências necessárias para desenvolvimento e execução do projeto). 
+Após a ativação do ambiente virtual, todos os pacotes instalados via _pip_ serão instalados dentro do ambiente. Caso queira somente executar o projeto, apenas a primeira instalação é necessária.
 
-Para instalar as dependências necessárias para executar o projeto, digite:
+Para instalar as dependências necessárias para a execução do projeto, digite:
 
 ```powershell
 pip install -r requirements.txt --upgrade
 ```
-Para instalar as dependências necessárias para desenvolvimento do projeto, digite:
+
+Para instalar as dependências necessárias para o desenvolvimnento do projeto, digite:
 
 ```powershell
 pip install -r dev-requirements.txt --upgrade
