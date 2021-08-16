@@ -162,13 +162,13 @@ git stash list
 ```
 Voltar a trabalhar em um stash específico:
 ```sh
-git stash {pop/appy} {id_do_stash}
+git stash pop {id_do_stash}
 ```
 A id do stash pode ser encontrada observando na lista de stashes o número dentro dos colchetes "stash@{0}"
 
 Ao usar o comando `pop` o stash volta para a área de trabalho atual e é retirado da lista de stashes, sendo necessário salvá-lo novamente caso não termine o trabalho.
 
-Ao usar o comando `apply`o stash continua na lista com as altereações salvas anteriormente. Para salvar a nova versão, será necessário excluir o stash anterior ou salvar um novo stash e manter ambas as versões.
+Caso queira que a versão salva anteriormente continue na lista, substitua `pop` por `apply`.
 
 Excluir um stash específico:
 ```sh
