@@ -34,7 +34,7 @@ cat ~/.ssh/id_ed25519.pub | clip
 Se preferir usar o Prompt de Comando do Windows, digite:
 
 ```sh
-type .ssh\id_ed25519.pub | clip
+type %userprofile%\.ssh\id_ed25519.pub | clip
 ```
 
 Adiciona a chave no github:
